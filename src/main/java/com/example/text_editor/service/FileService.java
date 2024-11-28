@@ -14,17 +14,13 @@ public class FileService {
     }
 
     public TextFile openFile(String fileName) {
-        // Поиск файла в базе данных
         TextFile file = textFileRepository.findByName(fileName);
         if (file != null) {
-            // Если файл найден, возвращаем его
             return file;
         }
-        // Если файл не найден, создаём новый
         TextFile newFile = new TextFile(fileName, "Empty content");
         return textFileRepository.save(newFile);
     }
-
 
     public TextFile editFile(String fileName, String newContent) {
         TextFile file = textFileRepository.findByName(fileName);
@@ -34,4 +30,17 @@ public class FileService {
         }
         throw new RuntimeException("File not found");
     }
+
+    public TextFile saveFile(String fileName, String content) {
+        TextFile file = textFileRepository.findByName(fileName);
+        if (file == null) {
+            file = new TextFile(fileName, content);
+        } else {
+            file.setContent(content);
+        }
+        return textFileRepository.save(file);
+    }
 }
+
+
+

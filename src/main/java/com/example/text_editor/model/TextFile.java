@@ -4,14 +4,11 @@ import jakarta.persistence.*;
 
 @Entity
 public class TextFile {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
-
-    @Lob
     private String content;
 
     public TextFile() {}
@@ -21,13 +18,8 @@ public class TextFile {
         this.content = content;
     }
 
-    // Getters and Setters
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -46,4 +38,3 @@ public class TextFile {
         this.content = content;
     }
 }
-

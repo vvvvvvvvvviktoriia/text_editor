@@ -5,8 +5,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class EditService {
 
-    public String appendText(String currentContent, String newText) {
+    public String insertText(String currentContent, String newText) {
         return currentContent + "\n" + newText;
     }
 }
+
 
